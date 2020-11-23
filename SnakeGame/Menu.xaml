@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="SnakeGame.Menu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SnakeGame"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="600" Width="600" Height="500" Background="White">
+    <UserControl.Resources>
+        <Storyboard x:Key="AnimateImage">
+            <DoubleAnimation Storyboard.TargetName="MyImg" Storyboard.TargetProperty="(Canvas.Left)" From="-80" To="600" Duration="0:0:20" RepeatBehavior="Forever"/>
+            <DoubleAnimation Storyboard.TargetName="MyImg" Storyboard.TargetProperty="Width" From="100" To="90" Duration="0:0:1" AutoReverse="True" RepeatBehavior="Forever"/>
+            <DoubleAnimation Storyboard.TargetName="MyImg" Storyboard.TargetProperty="Height" From="110" To="109" Duration="0:0:15" AutoReverse="True" RepeatBehavior="Forever"/>
+        </Storyboard>
+        <Style x:Key="ButtonControlTemplate" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid x:Name="myGrid">
+        <Image x:Name="Mybackground" Source="Images\background.jpg"/>
+        <StackPanel Orientation="Vertical" Margin="110,150,110,90">
+            <Button Content="Singleplayer" Style="{StaticResource Buttonstyle}" MinWidth="330" Margin="5" FontSize="32" Click="Singleplayer_Click"></Button>
+            <Button Content="Multiplayer" Style="{StaticResource Buttonstyle}" MinWidth="330" Margin="5" FontSize="32" Click="Multiplayer_Click"></Button>
+            <Button Content="Options" Style="{StaticResource Buttonstyle}" MinWidth="330" Margin="5" FontSize="32" Click="Options_Click"></Button>
+            <Button Content="Quit" Style="{StaticResource Buttonstyle}" MinWidth="330" Margin="5" FontSize="32" Click="Quit_Click"></Button>
+        </StackPanel>
+        <Canvas>
+            <Image x:Name="MyImg" Source="Images\cartoonsnake.png" Canvas.Top="410" Canvas.Left="0" Height="110" Width="100" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <RotateTransform Angle="-360"/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </Canvas>
+        <Button x:Name="btnSound" Width="30" Height="30" Margin="561, 0, 10, 460" Style="{DynamicResource ButtonControlTemplate}" Click="BtnSound_Click">
+            <Image x:Name="soundButton" Source="Images\soundOnImage.png"/>
+        </Button>
+    </Grid>
+</UserControl>
+
+        
